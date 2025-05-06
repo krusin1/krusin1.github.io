@@ -1,0 +1,22 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+canvas {
+  display: block;
+}
+
+button {
+  font-size: 18px;
+/*   font-style: satoshit; */
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  color: white;
+  background: indigo;
+}
+
+button:hover {
+  background:black;
+}
