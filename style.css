@@ -10,6 +10,7 @@ canvas {
 button {
   font-size: 18px;
 /*   font-style: satoshit; */
+  align:center;
   border: none;
   border-radius: 3px;
   padding: 10px;

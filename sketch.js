@@ -154,10 +154,10 @@ function draw() {
       noStroke();
       fill(255);
     textAlign(CENTER);
-    textSize(40);
-    text("Ritual Complete", width / 2, 50);
+    //textSize(40);
+    //text("Ritual Complete", width / 2, 50);
     textSize(20);
-    text("The spirits have been awakened. Now make a sign together and record it as a symbol of your collaboration", width / 2,100);
+    text("A sign to celebrate your joined efforts", width / 2,50);
       pop();
        button = createButton('make a record'); 
       button.mousePressed(() => {
@@ -211,15 +211,15 @@ function drawLoreScreen() {
 function drawPracticeMode() {
   background(255); // optional clean background
   
-  imageMode(CORNER);
-  image(video, width/2-275, 100, width / 2, (width / 2) * 0.75);
+  //imageMode(CORNER);
+  //image(video, width/2-275, 100, width / 2, (width / 2) * 0.75);
 
   fill(2);
   textSize(24);
   textAlign(CENTER);
-  text("Practice making gestures at the right moment", width / 2, 50);
-  text("Player 1", 150, 150);
-  text("Player 2", 950, 150);
+  text("Practice making gestures at the right moment", width / 2, 30);
+ 
+  //text("Player 2", width / 2, 100);
 
   // Now decide where to draw the gesture image
   imageMode(CENTER);
@@ -227,24 +227,44 @@ function drawPracticeMode() {
   let layoutType = currentGesture % 4; 
 
   if (layoutType === 0) {
-   
-    image(elepic, 150, height / 2, 300, 200);
-  } else if (layoutType === 1) {
+    push()
+    imageMode(CORNER);
+     image(video, 80, 80, width / 2, (width / 2) * 0.75);
+    pop()
+    text("Keeper 1's turn", width / 2, 70);
+
+    image(elepic, width/2+220, height / 2, 400, 300);
+  } 
   
-    image(pick, width - 150, height / 2, 300, 200);
+    else if (layoutType === 1) {
+      push();
+      imageMode(CORNER);
+    image(video, width - width / 2 - 50, 80, width / 2, (width / 2) * 0.75);
+      pop();
+     text("Keeper 2's turn", width / 2, 70);
+    image(pick, width / 2 -250, height / 2, 400, 300);
   } else if (layoutType === 2) {
-  
-    image(conchleft, 150, height / 2, 300, 200);
-     image(conchright, width - 150, height / 2, 300, 200);
+   push();
+    imageMode(CORNER);
+      image(video, width/2-275, 80, width / 2, (width / 2) * 0.75);
+    pop();
+     text("Work together! Make the gesture and put your hands together", width / 2, 70);
+    image(conchleft, 150, height / 2, 400, 300);
+     image(conchright, width - 150, height / 2, 400, 300);
   }
 else if (layoutType === 3) {
-  
-    image(deerimg, 150, height / 2, 300, 200);
-     image(pick, width - 150, height / 2, 300, 200);
+  push();
+    imageMode(CORNER);
+      image(video, width/2-275, 80, width / 2, (width / 2) * 0.75);
+  pop();
+   text("Work together! Make the gesture and put your hands together", width / 2, 70);
+    image(deerimg, 150, height / 2, 400, 300);
+     image(antlerpic, width - 150, height / 2, 400, 300);
   }
   if (gestureMatched) {
     fill(0, 200, 0);
-    text("That's right!", width / 2,  85);
+    textAlign(CENTER)
+    text("That's right!", width / 2 +20,  height-100);
 
     if (!gestureMatchedTimerStarted) {
       gestureMatchedTimerStarted = true;
@@ -266,7 +286,7 @@ function drawGameplay1() {
     fill(0);
     textSize(24);
     textAlign(CENTER);
-    text(`Player 1 — Make your move!`, width / 2, 50);
+    text(`Keeper 1 — Make your move!`, width / 2, 50);
    
   // let currentTime = millis();
   // let timeLeft = timer - Math.floor((currentTime - lastSwitchTime) / 1000);
@@ -287,7 +307,7 @@ function drawGameplay2(){
     fill(0);
     textSize(24);
     textAlign(CENTER);
-    text(`Player 2 — Make your move!`, width / 2, 50);
+    text(`Keeper 2 — Make your move!`, width / 2, 50);
   
   image(video, width - width / 2 - 50, 100, width / 2, (width / 2) * 0.75);
          imageMode(CORNER);
@@ -320,15 +340,24 @@ function drawGameplay3(){
 
 function drawGameplay4(){
    imageMode(CENTER);
+     textSize(20);
+
   if(p===1){
+   
     image(snake2tarot, width/2,height/2,1120,630)
+     fill(255)
+    text("The spirits have awakened! Your joined effort has pleased them. \n Now, they ask you to leave behind a sign, together. \n A trace. \n A memory. \n\n (click to continue)", width / 2, 70);
 
   }
   else if(p===2){
     image(d2tarot,width/2,height/2,1120,630); 
+     fill(255)
+   text("The spirits have awakened! Your joined effort has pleased them. \n Now, they ask you to leave behind a sign, together. \n A trace. \n A memory. \n\n (click to continue)", width / 2, 70);
   }
   else if(p===3){
     image(sdtarot,width/2,height/2,1120,630);
+     fill(255)
+   text("The spirits have awakened! Your joined effort has pleased them. \n Now, they ask you to leave behind a sign, together. \n A trace. \n A memory. \n\n (click to continue)", width / 2, 70);
   }
      // image(conchleft, 150, height / 2, 300, 200);
      // image(conchright, width - 150, height / 2, 300, 200);
@@ -364,7 +393,11 @@ function takesnap() {
 }
 
 function drawFinalScreen() {
-
+//   push()
+//   imageMode(CENTER)
+//   image(video, width / 4, 100, width / 2, (width / 2) * 0.75)
+  
+//   pop()
    if (hands.length > 0) {
         for (let hand of hands) {
       if (hand.confidence > 0.1) {
