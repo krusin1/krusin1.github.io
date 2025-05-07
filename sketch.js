@@ -340,7 +340,7 @@ function drawGameplay3(){
 
 function drawGameplay4(){
    imageMode(CENTER);
-     textSize(20);
+     textSize(14);
 
   if(p===1){
    
